@@ -1,0 +1,46 @@
+POST http://localhost:8080/parse
+Content-Type: application/json
+
+{
+  "url": "https://www.mvideo.ru/products/smartfon-huawei-p40-lite-e-nfc-midnight-black-art-l29n-30050496",
+  "query": "body > div.wrapper > div.page-content > div.main-holder > div > div.product-main-information.section > div.o-container__price-column > div > div.fl-pdp-pay.o-pay.u-mb-8 > div.o-pay__content > div.fl-pdp-price > div > div"
+}
+
+###
+
+GET http://localhost:8080/fillgoods
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:8080/goods/add
+Accept: */*
+Content-Type: application/json
+
+{
+        "name": "zubnaya schetka2",
+        "link": "https://www.mvideo.ru/products/elektricheskaya-zubnaya-shhetka-braun-oral-b-vitality-d100-413-1-crossaction-1-1-20065314",
+        "store": {
+         "id": "1",
+         "name": "MVIDEO",
+         "link": "https://mvideo.ru"
+        }
+}
+###
+
+GET http://localhost:8080/goods
+Accept: */*
+Cache-Control: no-cache
+###
+
+
+POST http://localhost:8080/trackgood
+Accept: */*
+Content-Type: application/json
+
+{
+  "name": "zubnaya schetka5",
+  "link": "https://www.mvideo.ru/products/elektricheskaya-zubnaya-shhetka-braun-oral-b-vitality-d100-413-1-crossaction-1-1-20065314"
+
+}

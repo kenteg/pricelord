@@ -1,0 +1,27 @@
+db:
+  datasource:
+    jdbcUrl: jdbc:h2:mem:db;INIT=CREATE SCHEMA IF NOT EXISTS DB
+    driverClass: org.h2.Driver
+    username: test
+    password: test
+    poolName: defaultPool
+    leakDetectionThreshold: 20000
+    isAllowPoolSuspension: true
+
+
+spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jpa:
+    generate-ddl: true
+    hibernate.ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        default_schema: db
+        show_sql: true
+        use_sql_comments: false
+        format_sql: false
+        generate_statistics: false

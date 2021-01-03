@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>PriceLord</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+            <table id="goods" class="table table-bordered table-responsive" style="width: 100%" border="1">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Link</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $.ajax({ url: "http://localhost:8080/goods",
+            context: document.body,
+            success: function(data){
+                console.log(data)
+                    var tableBody = document.createElement('tbody')
+
+                    data.forEach(function(cellData) {
+                        var row = document.createElement('tr');
+                        var namecell = document.createElement('td');
+                        var linkcell = document.createElement('td');
+                        var pricecell = document.createElement('td');
+                        namecell.appendChild(document.createTextNode(cellData.goods[0].name));
+                        const anchor = document.createElement('a');
+                        anchor.href = cellData.goods[0].link
+                        anchor.innerText = cellData.goods[0].link
+                        linkcell.appendChild(anchor);
+                        pricecell.appendChild(document.createTextNode(cellData.price.price));
+                        row.appendChild(namecell);
+                        row.appendChild(linkcell);
+                        row.appendChild(pricecell);
+
+                        tableBody.appendChild(row)
+                    });
+
+
+                $('#goods').append(tableBody);
+
+            }});
+    });
+</script>
+
+
+<div style="margin-top: 50px">
+<hr>
+<form id="parse_form" action="/parse" method="post" >
+    <label>Имя товара:</label>
+    <br>
+    <input type="text" name="name">
+    <br>
+    <label>Ссылка (пока только MVideo):</label>
+    <br>
+    <input type="text" name="link">
+    <br>
+    <button type="submit" value="Submit">Parse</button>
+</form>
+
+</div>
+
+<script type="text/javascript">
+    const serialize_form = form => JSON.stringify(
+        Array.from(new FormData(form).entries())
+            .reduce((m, [ key, value ]) => Object.assign(m, { [key]: value }), {})
+    );
+
+    $('#parse_form').on('submit', function(event) {
+        event.preventDefault();
+        const json = serialize_form(this);
+        console.log(json);
+        $.ajax({
+            type: 'POST',
+            url: '/trackgood',
+            dataType: 'json',
+            data: json,
+            contentType: 'application/json',
+            success: function(data) {
+                console.log(data)
+                location.reload(true);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
