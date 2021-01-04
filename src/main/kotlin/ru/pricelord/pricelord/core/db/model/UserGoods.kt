@@ -1,4 +1,4 @@
-package ru.pricelord.pricelord.model
+package ru.pricelord.pricelord.core.db.model
 
 import javax.persistence.CascadeType
 import javax.persistence.Entity
@@ -15,10 +15,10 @@ data class UserGoods(
         val id: Long? = null,
         @OneToOne
         val user: User,
-        @OneToMany(cascade = [CascadeType.ALL])
-        var goods: MutableList<Good>,
         @OneToOne(cascade = [CascadeType.ALL])
-        var price: Price?,
+        var goods: Goods,
+        @OneToOne(cascade = [CascadeType.ALL])
+        var price: Price? = null,
 
-        var isNeedNotification: Boolean = false,
+        var isNeedNotification: Boolean = false
 )

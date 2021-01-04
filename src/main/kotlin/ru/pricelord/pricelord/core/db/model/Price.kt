@@ -1,15 +1,18 @@
-package ru.pricelord.pricelord.model
+package ru.pricelord.pricelord.core.db.model
 
+import java.math.BigDecimal
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.OneToOne
 
 @Entity
-data class Store(
+data class Price(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
-        val name: String,
-        val link: String
+        @OneToOne
+        val goods: Goods,
+        val price: BigDecimal
 )
