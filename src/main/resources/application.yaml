@@ -1,6 +1,6 @@
 db:
   datasource:
-    jdbcUrl: jdbc:h2:mem:db;INIT=CREATE SCHEMA IF NOT EXISTS DB
+    jdbcUrl: jdbc:h2:mem:db;INIT=runscript from 'classpath:/init.sql'
     driverClass: org.h2.Driver
     username: test
     password: test
