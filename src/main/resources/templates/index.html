@@ -29,7 +29,7 @@
 
 <script>
     $(document).ready(function(){
-        $.ajax({ url: "http://localhost:8080/goods",
+        $.ajax({ url: "/goods",
             context: document.body,
             success: function(data){
                 console.log(data)
@@ -45,7 +45,7 @@
                         anchor.href = cellData.goods[0].link
                         anchor.innerText = cellData.goods[0].link
                         linkcell.appendChild(anchor);
-                        pricecell.appendChild(document.createTextNode(cellData.price.price));
+                        pricecell.appendChild(document.createTextNode(cellData.price[0].price));
                         row.appendChild(namecell);
                         row.appendChild(linkcell);
                         row.appendChild(pricecell);

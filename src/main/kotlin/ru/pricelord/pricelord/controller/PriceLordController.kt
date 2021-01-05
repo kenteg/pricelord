@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import ru.pricelord.pricelord.model.Good
-import ru.pricelord.pricelord.model.Price
 import ru.pricelord.pricelord.model.Store
 import ru.pricelord.pricelord.model.User
 import ru.pricelord.pricelord.model.UserGoods
@@ -17,7 +16,7 @@ import ru.pricelord.pricelord.repo.GoodsRepo
 import ru.pricelord.pricelord.repo.StoreRepo
 import ru.pricelord.pricelord.repo.UserGoodsRepo
 import ru.pricelord.pricelord.repo.UsersRepo
-import java.math.BigDecimal
+import ru.pricelord.pricelord.service.PriceHandler
 
 
 @RestController
@@ -25,18 +24,20 @@ class PriceLordController(
         val goodsRepo: GoodsRepo,
         val userRepo: UsersRepo,
         val userGoodsRepo: UserGoodsRepo,
-        val storeRepo: StoreRepo
+        val storeRepo: StoreRepo,
+
+        val priceHandler: PriceHandler
 ) {
     @CrossOrigin(origins=["*", "http://localhost:8080"])
     @GetMapping("/goods")
     fun showAllGoods(): List<UserGoods> {
         return userGoodsRepo.findAll().toList()
+
     }
 
     @PostMapping("/goods/add")
     fun fillGoods(@RequestBody good: Good) {
-        storeRepo.saveAndFlush(good.store)
-
+      //  storeRepo.saveAndFlush(good.store)
         goodsRepo.save(good)
     }
 
@@ -61,18 +62,16 @@ class PriceLordController(
         val good = Good(
                 name = req.name,
                 link = req.link,
-                store = Store(
-                        name = req.link.substring(12, 18),
-                        link = req.link.substring(0, 22)
-                )
+                store = storeRepo.findByNameIgnoreCase(req.link.substring(12, 18))
+
         )
-        val doc: Document = Jsoup.connect(req.link).get()
-
-        //Только для Mvideo
-        val mvideoPrice = doc.select("body > div.wrapper > div.page-content > div.main-holder > div > div.product-main-information.section > div.o-container__price-column > div > div.fl-pdp-pay.o-pay.u-mb-8 > div.o-pay__content > div.fl-pdp-price > div > div").text()
-
-        val priceValue = mvideoPrice.filter { it.isDigit() }
-        val price = Price(good = good, price = BigDecimal(priceValue))
+//        val doc: Document = Jsoup.connect(req.link).get()
+//
+//        //Только для Mvideo
+//        val mvideoPrice = doc.select("body > div.wrapper > div.page-content > div.main-holder > div > div.product-main-information.section > div.o-container__price-column > div > div.fl-pdp-pay.o-pay.u-mb-8 > div.o-pay__content > div.fl-pdp-price > div > div").text()
+//
+//        val priceValue = mvideoPrice.filter { it.isDigit() }
+//        val price = Price(good = good, price = BigDecimal(priceValue))
 
         val user = User(1, "token", null)
         userRepo.saveAndFlush(user)
@@ -80,8 +79,9 @@ class PriceLordController(
         val userGoods = UserGoods(
                 user = user,
                 goods = mutableListOf(good),
-                price = price,
                 isNeedNotification = true)
+
+        priceHandler.handle(userGoods)
 
         userGoodsRepo.saveAndFlush(userGoods)
 

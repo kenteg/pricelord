@@ -22,9 +22,9 @@ Content-Type: application/json
         "name": "zubnaya schetka2",
         "link": "https://www.mvideo.ru/products/elektricheskaya-zubnaya-shhetka-braun-oral-b-vitality-d100-413-1-crossaction-1-1-20065314",
         "store": {
-         "id": "1",
          "name": "MVIDEO",
-         "link": "https://mvideo.ru"
+         "link": "https://mvideo.ru",
+          "priceSelector": "body > div.wrapper > div.page-content > div.main-holder > div > div.product-main-information.section > div.o-container__price-column > div > div.fl-pdp-pay.o-pay.u-mb-8 > div.o-pay__content > div.fl-pdp-price > div > div"
         }
 }
 ###

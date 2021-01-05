@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository
 import ru.pricelord.pricelord.model.Store
 
 @Repository
-interface StoreRepo : JpaRepository<Store, Long>
+interface StoreRepo : JpaRepository<Store, Long> {
+    fun findByNameIgnoreCase(name: String): Store
+}

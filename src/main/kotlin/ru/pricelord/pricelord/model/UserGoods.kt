@@ -17,8 +17,8 @@ data class UserGoods(
         val user: User,
         @OneToMany(cascade = [CascadeType.ALL])
         var goods: MutableList<Good>,
-        @OneToOne(cascade = [CascadeType.ALL])
-        var price: Price?,
+        @OneToMany(cascade = [CascadeType.ALL])
+        var price: MutableList<Price> = mutableListOf(),
 
         var isNeedNotification: Boolean = false,
 )

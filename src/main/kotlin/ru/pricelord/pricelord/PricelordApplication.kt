@@ -7,5 +7,7 @@ import org.springframework.boot.runApplication
 class PricelordApplication
 
 fun main(args: Array<String>) {
+	System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver") // TODO Extract to application properties
+	System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
 	runApplication<PricelordApplication>(*args)
 }
