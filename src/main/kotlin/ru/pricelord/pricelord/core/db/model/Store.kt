@@ -1,9 +1,6 @@
 package ru.pricelord.pricelord.core.db.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class Store(
@@ -11,5 +8,7 @@ data class Store(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
         val name: String,
-        val link: String
+        val link: String,
+        @Column(name = "path_to_price")
+        val pathToPrice: String
 )

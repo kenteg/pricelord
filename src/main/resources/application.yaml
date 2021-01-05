@@ -25,3 +25,9 @@ spring:
         use_sql_comments: false
         format_sql: false
         generate_statistics: false
+
+scheduler:
+  priceParser:
+    delay: 60000
+  linkStoreToGoods:
+    delay: 60000
