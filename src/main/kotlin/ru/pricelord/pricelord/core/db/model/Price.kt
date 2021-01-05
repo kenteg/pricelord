@@ -9,6 +9,6 @@ data class Price(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
         @ManyToOne
-        val goods: Goods,
+        val item: Item,
         val price: BigDecimal
 )

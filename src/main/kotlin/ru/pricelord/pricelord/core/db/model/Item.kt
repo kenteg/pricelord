@@ -3,7 +3,7 @@ package ru.pricelord.pricelord.core.db.model
 import javax.persistence.*
 
 @Entity
-data class Goods(
+data class Item(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,

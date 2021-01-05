@@ -1,10 +1,6 @@
 package ru.pricelord.pricelord.core.db.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.OneToOne
+import javax.persistence.*
 
 @Entity
 data class User(
@@ -13,5 +9,5 @@ data class User(
         val id: Long,
         val authToken: String?,
         @OneToOne
-        val userGoods: UserGoods?
+        val userItem: UserItem?
 )

@@ -2,14 +2,14 @@ package ru.pricelord.pricelord.core.db.schedule
 
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
-import ru.pricelord.pricelord.core.db.service.GoodsService
+import ru.pricelord.pricelord.core.db.service.ItemService
 
 @Component
 class StoreScheduler(
-        private val goodsService: GoodsService
+        private val itemService: ItemService
 ) {
-    @Scheduled(fixedDelayString = "\${scheduler.linkStoreToGoods.delay}")
-    fun linkStoreToGoods() {
-        goodsService.linkStoreToGoods()
+    @Scheduled(fixedDelayString = "\${scheduler.linkItemToStore.delay}")
+    fun linkItemToStore() {
+        itemService.linkItemToStore()
     }
 }

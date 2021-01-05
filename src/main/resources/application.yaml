@@ -29,5 +29,5 @@ spring:
 scheduler:
   priceParser:
     delay: 60000
-  linkStoreToGoods:
+  linkItemToStore:
     delay: 60000
