@@ -24,6 +24,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jsoup:jsoup:1.13.1")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.4.1")
+	implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 	implementation("io.github.microutils:kotlin-logging:1.12.0")
 
 	runtimeOnly("com.h2database:h2")

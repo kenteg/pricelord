@@ -31,3 +31,8 @@ scheduler:
     delay: 60000
   linkItemToStore:
     delay: 60000
+
+webdriver:
+  chrome:
+    driver: "/usr/local/bin/chromedriver"
+    logfile: "chromedriver.log"
