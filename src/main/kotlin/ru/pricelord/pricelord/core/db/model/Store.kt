@@ -1,14 +1,15 @@
 package ru.pricelord.pricelord.core.db.model
 
-import javax.persistence.*
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.data.mongodb.core.mapping.Document
 
-@Entity
+@Document(collection = "store")
 data class Store(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        @field:Id
+        val id: String? = null,
         val name: String,
+        @field:Indexed
         val link: String,
-        @Column(name = "path_to_price")
         val pathToPrice: String
 )

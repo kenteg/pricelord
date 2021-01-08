@@ -1,15 +1,17 @@
 package ru.pricelord.pricelord.core.db.model
 
-import javax.persistence.*
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.data.mongodb.core.mapping.Document
 
-@Entity
+@Document(collection = "item")
 data class Item(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        @field:Id
+        val id: String? = null,
+        @field:Indexed
         val link: String,
-        @OneToMany(cascade = [CascadeType.ALL])
-        var price: List<Price> = emptyList(),
-        @OneToOne(cascade = [CascadeType.ALL])
-        var store: Store? = null
+        @field:Indexed
+        var storeId: String? = null,
+        var lastPriceId: String? = null
+
 )

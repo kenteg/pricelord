@@ -1,16 +1,16 @@
 package ru.pricelord.pricelord.core.db.model
 
-import javax.persistence.*
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.data.mongodb.core.mapping.Document
 
-@Entity
+@Document(collection = "user_item")
 data class UserItem(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
-        @ManyToOne
-        val user: User,
-        @ManyToOne
-        var item: Item,
-
+        @field:Id
+        val id: String? = null,
+        @field:Indexed
+        val userId: String,
+        @field:Indexed
+        var itemId: String,
         var isNeedNotification: Boolean = false
 )

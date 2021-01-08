@@ -22,9 +22,10 @@ class ItemService(
             try {
                 val store = findStore(it)
 
-                it.store = store ?: throw StoreNotFoundException("Store not found for item: ${it.id} - ${it.link}")
+                it.storeId =
+                    store?.id ?: throw StoreNotFoundException("Store not found for item: ${it.id} - ${it.link}")
 
-                itemRepository.saveAndFlush(it)
+                itemRepository.save(it)
             } catch (ex: Throwable) {
                 log.error("Error while updating store for item: ${it.id} - ${it.link}", ex)
             }
@@ -39,5 +40,5 @@ class ItemService(
 
     fun findItemByLink(link: String): Item? = itemRepository.findByLink(link)
 
-    fun saveItem(item: Item): Item = itemRepository.saveAndFlush(item)
+    fun saveItem(item: Item): Item = itemRepository.save(item)
 }

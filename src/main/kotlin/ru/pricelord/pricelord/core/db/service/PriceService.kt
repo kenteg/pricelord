@@ -11,12 +11,14 @@ import ru.pricelord.pricelord.core.db.model.Item
 import ru.pricelord.pricelord.core.db.model.Price
 import ru.pricelord.pricelord.core.db.repository.ItemRepository
 import ru.pricelord.pricelord.core.db.repository.PriceRepository
+import ru.pricelord.pricelord.core.db.repository.StoreRepository
 import java.math.BigDecimal
 
 @Service
 class PriceService(
-        private val itemRepository: ItemRepository,
-        private val priceRepository: PriceRepository
+    private val itemRepository: ItemRepository,
+    private val priceRepository: PriceRepository,
+    private val storeRepository: StoreRepository
 ) {
 
     private val log = KotlinLogging.logger {}
@@ -25,10 +27,14 @@ class PriceService(
         val items = itemRepository.findItemsWithoutPrices()
         items.forEach {
             try {
-                val priceValue = parsePrice(it)
-                val price = Price(item = it, price = priceValue)
+                if (it.storeId == null) //store scheduler hasn't started yet
+                    return
 
-                priceRepository.saveAndFlush(price)
+                val priceValue = parsePrice(it)
+                val price = Price(itemId = it.id!!, price = priceValue)
+
+                val lastPrice = priceRepository.save(price)
+                itemRepository.save(it.apply { lastPriceId = lastPrice.id })
             } catch (ex: Throwable) {
                 log.error("Error while parse price for item: ${it.id} - ${it.link}", ex)
             }
@@ -36,7 +42,8 @@ class PriceService(
     }
 
     fun parsePrice(item: Item): BigDecimal {
-        val pathToPrice = item.store!!.pathToPrice
+        val store = storeRepository.findById(item.storeId!!)
+        val pathToPrice = store.get().pathToPrice
 
         val options = ChromeOptions()
 
