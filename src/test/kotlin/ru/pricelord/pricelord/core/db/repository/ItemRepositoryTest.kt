@@ -1,7 +1,7 @@
 package ru.pricelord.pricelord.core.db.repository
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,23 +16,40 @@ internal class ItemRepositoryTest {
     @Autowired
     lateinit var itemRepository: ItemRepository
 
-    @Test
-    fun `save item`() {
-        val item = getObject<Item>("item/item1.json")
-        val savedItem = itemRepository.save(item)
+    lateinit var itemNoLink: Item
 
-        assertEquals(item.link, savedItem.link)
-        assertNotNull(savedItem.id)
+    @BeforeEach
+    fun setup() {
+        itemRepository.deleteAll()
+        itemNoLink = getObject<Item>("item/item_link_only.json")
+        val item2 = getObject<Item>("item/item_mvideo_8888.json")
+        val item3 = getObject<Item>("item/item_mvideo_9999.json")
+
+        itemRepository.save(itemNoLink)
+        itemRepository.save(item2)
+        itemRepository.save(item3)
     }
 
     @Test
-    fun `find by id`() {
-//        val invoice = getObject<Invoice>("invoice/model/invoice1.json")
-//        invoiceRepository.save(invoice)
-//
-//        val invoiceDb = invoiceRepository.findByInvoiceId("111")
-//
-//        assertNotNull(invoiceDb)
+    fun `findItemsWithoutPrices`() {
+        val items = itemRepository.findItemsWithoutPrices()
+
+        assertEquals(1, items.size)
+        assertEquals(itemNoLink.link, items[0].link)
     }
 
+    @Test
+    fun `findItemsWithoutStore`() {
+        val items = itemRepository.findItemsWithoutStore()
+
+        assertEquals(1, items.size)
+        assertEquals(itemNoLink.link, items[0].link)
+    }
+
+    @Test
+    fun `findByLink`() {
+        val item = itemRepository.findByLink(itemNoLink.link)
+
+        assertEquals(itemNoLink.link, item!!.link)
+    }
 }

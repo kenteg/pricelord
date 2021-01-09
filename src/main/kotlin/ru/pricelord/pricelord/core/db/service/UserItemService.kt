@@ -16,8 +16,8 @@ class UserItemService(
         private val itemService: ItemService,
         private val linkService: LinkService
 ) {
-    fun findItemsByUserId(userId: Long): List<UserItem> =
-            userItemRepository.findByUserId(userId)
+    fun findItemsByUserId(userId: String): List<UserItem> =
+        userItemRepository.findByUserId(userId)
 
     @Transactional
     fun saveUserItem(userItemRequest: UserItemRequest): UserItem {

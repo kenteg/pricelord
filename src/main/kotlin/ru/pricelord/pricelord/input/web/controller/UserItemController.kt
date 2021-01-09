@@ -12,7 +12,7 @@ class UserItemController(
 
     @CrossOrigin(origins = ["*", "http://localhost:8080"])
     @GetMapping("/user-item")
-    fun showAllUserItems(@RequestParam userId: Long): List<UserItem> {
+    fun showAllUserItems(@RequestParam userId: String): List<UserItem> {
         return userItemService.findItemsByUserId(userId)
     }
 

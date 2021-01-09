@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class UserItem(
         @field:Id
         val id: String? = null,
-        @field:Indexed
+        @field:Indexed(unique = true)
         val userId: String,
         @field:Indexed
         var itemId: String,
