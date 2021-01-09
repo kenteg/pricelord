@@ -5,7 +5,6 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.10.RELEASE"
 	kotlin("jvm") version "1.4.21"
 	kotlin("plugin.spring") version "1.4.21"
-	kotlin("plugin.jpa") version "1.4.21"
 }
 
 group = "ru.pricelord"
@@ -27,10 +26,9 @@ dependencies {
 	implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 	implementation("io.github.microutils:kotlin-logging:1.12.0")
 
-	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("com.github.cybuch:mongobeej")
-	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:0.15")
+	testImplementation("com.github.cybuch:mongobeej:1.0.1")
+	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0")
 }
 
 tasks.withType<KotlinCompile> {
