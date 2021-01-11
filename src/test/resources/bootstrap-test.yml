@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: "empty"
+      database: "test"
+  main:
+    allow-bean-definition-overriding: true #to allow to override mongobee in tests
+
+scheduler:
+  priceParser:
+    delay: 60000
+  linkItemToStore:
+    delay: 60000

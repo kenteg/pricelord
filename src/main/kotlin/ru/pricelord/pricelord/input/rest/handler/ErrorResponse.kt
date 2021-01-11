@@ -1,4 +1,4 @@
-package ru.pricelord.pricelord.input.web.handler
+package ru.pricelord.pricelord.input.rest.handler
 
 import com.fasterxml.jackson.annotation.JsonInclude
 

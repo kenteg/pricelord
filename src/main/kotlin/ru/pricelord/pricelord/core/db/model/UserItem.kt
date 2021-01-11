@@ -10,6 +10,7 @@ data class UserItem(
         val id: String? = null,
         @field:Indexed(unique = true)
         val userId: String,
+        val name: String,
         @field:Indexed
         var itemId: String,
         var isNeedNotification: Boolean = false

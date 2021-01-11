@@ -8,11 +8,11 @@ import ru.pricelord.pricelord.core.db.service.PriceService
 
 
 @Component
-class PriceUpdaterScheduler(
-        private val priceService: PriceService
+class PriceParserScheduler(
+    private val priceService: PriceService
 ) {
 
-    @Scheduled(fixedDelayString = "\${scheduler.priceUpdater.delay}")
+    @Scheduled(fixedDelayString = "\${scheduler.priceParser.delay}")
     @Transactional(propagation = Propagation.REQUIRED)
     fun parsePrice() {
         priceService.updatePrices()

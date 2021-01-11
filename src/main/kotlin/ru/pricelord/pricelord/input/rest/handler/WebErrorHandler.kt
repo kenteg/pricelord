@@ -1,4 +1,4 @@
-package ru.pricelord.pricelord.input.web.handler
+package ru.pricelord.pricelord.input.rest.handler
 
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import ru.pricelord.pricelord.core.db.errors.UserNotFoundException
-import ru.pricelord.pricelord.input.web.handler.ErrorCode.USER_NOT_FOUND
+import ru.pricelord.pricelord.input.rest.handler.ErrorCode.USER_NOT_FOUND
 
 @RestControllerAdvice
 class WebErrorHandler {

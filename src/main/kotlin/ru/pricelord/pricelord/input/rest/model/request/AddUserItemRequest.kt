@@ -1,8 +1,8 @@
-package ru.pricelord.pricelord.input.web.model.request
+package ru.pricelord.pricelord.input.rest.model.request
 
-data class UserItemRequest(
+data class AddUserItemRequest(
         val userId: String,
-        val id: Long,
+        val id: Long? = null,
         val name: String,
         val link: String,
         val isNeedNotification: Boolean
