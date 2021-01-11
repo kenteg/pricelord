@@ -1,6 +1,7 @@
 package ru.pricelord.pricelord.core.db.service
 
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 import ru.pricelord.pricelord.core.db.errors.UserNotFoundException
 import ru.pricelord.pricelord.core.db.model.Item
@@ -19,7 +20,7 @@ class UserItemService(
     fun findItemsByUserId(userId: String): List<UserItem> =
         userItemRepository.findByUserId(userId)
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     fun saveUserItem(userItemRequest: UserItemRequest): UserItem {
         val formattedLink = linkService.formatLink(userItemRequest.link)
         val item = itemService.findItemByLink(formattedLink) ?: itemService.saveItem(Item(link = formattedLink))
