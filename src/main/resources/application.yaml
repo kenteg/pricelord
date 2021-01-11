@@ -25,3 +25,14 @@ spring:
         use_sql_comments: false
         format_sql: false
         generate_statistics: false
+
+scheduler:
+  priceParser:
+    delay: 60000
+  linkItemToStore:
+    delay: 60000
+
+webdriver:
+  chrome:
+    driver: "/usr/local/bin/chromedriver"
+    logfile: "chromedriver.log"
