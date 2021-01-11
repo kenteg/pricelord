@@ -21,8 +21,8 @@ internal class UserItemRepositoryTest {
     @BeforeEach
     fun setup() {
         userItemRepository.deleteAll()
-        userItem1 = getObject("userItem/userItem_user1.json")
-        val userItem2 = getObject<UserItem>("userItem/userItem_user2.json")
+        userItem1 = getObject("userItem/model/userItem_user1_1.json")
+        val userItem2 = getObject<UserItem>("userItem/model/userItem_user2.json")
 
         userItemRepository.save(userItem1)
         userItemRepository.save(userItem2)
