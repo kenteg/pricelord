@@ -1,4 +1,4 @@
-package ru.pricelord.pricelord.core.db.errors
+package ru.pricelord.pricelord.core.errors
 
 class UserNotFoundException(
         override val message: String

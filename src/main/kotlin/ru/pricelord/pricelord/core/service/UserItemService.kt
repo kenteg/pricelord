@@ -1,13 +1,13 @@
-package ru.pricelord.pricelord.core.db.service
+package ru.pricelord.pricelord.core.service
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
-import ru.pricelord.pricelord.core.db.errors.UserNotFoundException
 import ru.pricelord.pricelord.core.db.model.Item
 import ru.pricelord.pricelord.core.db.model.UserItem
 import ru.pricelord.pricelord.core.db.repository.UserItemRepository
 import ru.pricelord.pricelord.core.db.repository.UserRepository
+import ru.pricelord.pricelord.core.errors.UserNotFoundException
 import ru.pricelord.pricelord.input.rest.model.request.AddUserItemRequest
 import ru.pricelord.pricelord.input.rest.model.response.AddUserItemResponse
 

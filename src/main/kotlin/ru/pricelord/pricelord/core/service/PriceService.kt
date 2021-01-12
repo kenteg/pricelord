@@ -1,4 +1,4 @@
-package ru.pricelord.pricelord.core.db.service
+package ru.pricelord.pricelord.core.service
 
 import mu.KotlinLogging
 import org.openqa.selenium.By
