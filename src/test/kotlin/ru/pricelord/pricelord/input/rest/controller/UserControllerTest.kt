@@ -8,7 +8,7 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
-import ru.pricelord.pricelord.core.db.service.UserService
+import ru.pricelord.pricelord.core.service.UserService
 
 @ExtendWith(SpringExtension::class)
 @ActiveProfiles("test")

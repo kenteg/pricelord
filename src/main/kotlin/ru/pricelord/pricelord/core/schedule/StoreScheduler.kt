@@ -1,8 +1,8 @@
-package ru.pricelord.pricelord.core.db.schedule
+package ru.pricelord.pricelord.core.schedule
 
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
-import ru.pricelord.pricelord.core.db.service.ItemService
+import ru.pricelord.pricelord.core.service.ItemService
 
 @Component
 class StoreScheduler(

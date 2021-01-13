@@ -1,12 +1,11 @@
-package ru.pricelord.pricelord.core.db.service
+package ru.pricelord.pricelord.core.service
 
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
-import ru.pricelord.pricelord.core.db.errors.StoreNotFoundException
 import ru.pricelord.pricelord.core.db.model.Item
-import ru.pricelord.pricelord.core.db.model.Store
 import ru.pricelord.pricelord.core.db.repository.ItemRepository
 import ru.pricelord.pricelord.core.db.repository.StoreRepository
+import ru.pricelord.pricelord.core.errors.StoreNotFoundException
 
 @Service
 class ItemService(
@@ -20,7 +19,8 @@ class ItemService(
         val items = itemRepository.findItemsWithoutStore()
         items.forEach {
             try {
-                val store = findStore(it)
+                val storeLink = it.link.substringBefore("/")
+                val store = storeRepository.findByLink(storeLink)
 
                 it.storeId =
                     store?.id ?: throw StoreNotFoundException("Store not found for item: ${it.id} - ${it.link}")
@@ -31,11 +31,6 @@ class ItemService(
             }
 
         }
-    }
-
-    fun findStore(item: Item): Store? {
-        val storeLink = item.link.substringBefore("/")
-        return storeRepository.findByLink(storeLink)
     }
 
     fun findItemByLink(link: String): Item? = itemRepository.findByLink(link)

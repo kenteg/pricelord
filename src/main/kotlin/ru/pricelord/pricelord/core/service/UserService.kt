@@ -1,4 +1,4 @@
-package ru.pricelord.pricelord.core.db.service
+package ru.pricelord.pricelord.core.service
 
 import org.springframework.stereotype.Service
 

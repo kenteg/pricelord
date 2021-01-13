@@ -3,7 +3,7 @@ package ru.pricelord.pricelord.input.rest.controller
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import ru.pricelord.pricelord.core.db.model.UserItem
-import ru.pricelord.pricelord.core.db.service.UserItemService
+import ru.pricelord.pricelord.core.service.UserItemService
 import ru.pricelord.pricelord.input.rest.model.request.AddUserItemRequest
 import ru.pricelord.pricelord.input.rest.model.response.AddUserItemResponse
 

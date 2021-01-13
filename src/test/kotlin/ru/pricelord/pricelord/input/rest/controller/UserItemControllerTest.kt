@@ -17,9 +17,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import ru.pricelord.pricelord.core.db.errors.UserNotFoundException
 import ru.pricelord.pricelord.core.db.model.UserItem
-import ru.pricelord.pricelord.core.db.service.UserItemService
+import ru.pricelord.pricelord.core.errors.UserNotFoundException
+import ru.pricelord.pricelord.core.service.UserItemService
 import ru.pricelord.pricelord.getFileAsString
 import ru.pricelord.pricelord.getObject
 import ru.pricelord.pricelord.input.rest.model.request.AddUserItemRequest

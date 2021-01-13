@@ -1,8 +1,8 @@
 {
+  "id": "id",
   "userId": "userId",
   "name": "mvideo item",
-  "link": "mvideo.ru/item",
+  "link": "mvideo/item",
   "itemId": "itemId",
-  "id": "id",
   "isNeedNotification": false
 }

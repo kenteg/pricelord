@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import ru.pricelord.pricelord.core.db.errors.UserNotFoundException
+import ru.pricelord.pricelord.core.errors.UserNotFoundException
 import ru.pricelord.pricelord.input.rest.handler.ErrorCode.USER_NOT_FOUND
 
 @RestControllerAdvice
