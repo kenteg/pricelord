@@ -26,6 +26,10 @@ dependencies {
 	implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 	implementation("io.github.microutils:kotlin-logging:1.12.0")
 
+	implementation("org.springframework.boot:spring-boot-starter-security:2.4.1")
+	implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.0")
+
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.github.cybuch:mongobeej:1.0.1")
 	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0")
