@@ -3,13 +3,31 @@ spring:
     mongodb:
       auto-index-creation: true
 
+  security:
+    oauth2:
+      client.registration.google:
+        clientId: ##########################
+        clientSecret: ##########################
+        scope: openid, profile, email, address, phone
+        redirect-uri: http://localhost:8080/
+        access-token-uri: https://www.googleapis.com/oauth2/v4/token
+        client-authentication-method: basic
+        authorization-grant-type: authorization_code
+        authorizationUri: https://accounts.google.com/o/oauth2/v2/auth"
+        userNameAttributeName: sub
+        jwkSetUri: https://www.googleapis.com/oauth2/v3/certs
+        clientName: Google
+        tokenUri: https://www.googleapis.com/oauth2/v4/token
+
+
 scheduler:
   priceParser:
-    delay: 60000
+    delay: 6000000
   linkItemToStore:
-    delay: 60000
+    delay: 6000000
 
 webdriver:
   chrome:
     driver: "/usr/local/bin/chromedriver"
     logfile: "chromedriver.log"
+
