@@ -25,10 +25,12 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.4.1")
 	implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 	implementation("io.github.microutils:kotlin-logging:1.12.0")
+	implementation("org.telegram:telegrambots:4.8.1")
+	implementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0")
+	//testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.github.cybuch:mongobeej:1.0.1")
-	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0")
 	testImplementation("com.nhaarman:mockito-kotlin:1.6.0")
 }
 

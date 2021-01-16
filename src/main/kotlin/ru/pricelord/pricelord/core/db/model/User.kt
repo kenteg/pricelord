@@ -8,4 +8,5 @@ data class User(
         @field:Id
         val id: String? = null,
         val authToken: String?,
+        val extSystem: String
 )

@@ -36,4 +36,6 @@ class ItemService(
     fun findItemByLink(link: String): Item? = itemRepository.findByLink(link)
 
     fun saveItem(item: Item): Item = itemRepository.save(item)
+
+    fun findByIds(ids: Iterable<String>): MutableIterable<Item> = itemRepository.findAllById(ids)
 }

@@ -13,3 +13,11 @@ webdriver:
   chrome:
     driver: "/usr/local/bin/chromedriver"
     logfile: "chromedriver.log"
+
+bot:
+  token: 1119065088:AAFYVXZRMcSOxgSqkemaTXHJU_v6A3CQmXY
+  name: Brain Builder
+
+proxy:
+  host: 142.93.51.220
+  port: 61872

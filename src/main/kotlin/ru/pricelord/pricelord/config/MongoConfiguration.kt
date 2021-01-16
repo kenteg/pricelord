@@ -3,10 +3,9 @@ package ru.pricelord.pricelord.config
 import com.mongodb.WriteConcern
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.mongodb.MongoDatabaseFactory
-import org.springframework.data.mongodb.MongoTransactionManager
 import org.springframework.data.mongodb.config.EnableMongoAuditing
 import org.springframework.data.mongodb.core.WriteConcernResolver
+
 
 @EnableMongoAuditing
 @Configuration(proxyBeanMethods = false)
@@ -19,9 +18,9 @@ class MongoConfiguration {
         }
     }
 
-    @Bean
-    fun transactionManager(dbFactory: MongoDatabaseFactory): MongoTransactionManager {
-        return MongoTransactionManager(dbFactory)
-    }
+//    @Bean
+//    fun transactionManager(dbFactory: MongoDatabaseFactory): MongoTransactionManager {
+//        return MongoTransactionManager(dbFactory)
+//    }
 
 }

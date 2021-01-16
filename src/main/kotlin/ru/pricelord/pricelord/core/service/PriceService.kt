@@ -58,4 +58,6 @@ class PriceService(
 
         return BigDecimal(priceStr.filter { it.isDigit() })
     }
+
+    fun findPriceByIds(ids: Iterable<String>): MutableIterable<Price> = priceRepository.findAllById(ids)
 }
