@@ -8,14 +8,14 @@ import org.telegram.telegrambots.ApiContextInitializer
 import org.telegram.telegrambots.bots.DefaultBotOptions
 import org.telegram.telegrambots.meta.TelegramBotsApi
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException
-import ru.pricelord.pricelord.bot.service.LearnerBot
+import ru.pricelord.pricelord.bot.service.PriceLordBot
 import javax.annotation.PostConstruct
 
 const val TELEGRAM_BOT = "telegramBot"
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 1)
-class BotConfig(val learnerBot: LearnerBot) {
+class BotConfig(val priceLordBot: PriceLordBot) {
 
     @PostConstruct
     fun loadBots() {
@@ -24,7 +24,7 @@ class BotConfig(val learnerBot: LearnerBot) {
         val botsApi = TelegramBotsApi()
 
         try {
-            botsApi.registerBot(learnerBot)
+            botsApi.registerBot(priceLordBot)
         } catch (e: TelegramApiException) {
             println(e.printStackTrace())
         }

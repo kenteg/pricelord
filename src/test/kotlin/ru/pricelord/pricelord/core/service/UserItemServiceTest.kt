@@ -31,7 +31,7 @@ internal class UserItemServiceTest {
         val userId = "userId"
         userItemService.findItemsByUserId(userId)
 
-        verify(userItemRepository, times(1)).findByUserId(userId)
+        verify(userItemRepository, times(1)).findByUserIdOrderByCreateDateDesc(userId)
     }
 
     @Test

@@ -19,7 +19,7 @@ class UserItemService(
         private val linkService: LinkService
 ) {
     fun findItemsByUserId(userId: String): List<UserItem> =
-        userItemRepository.findByUserId(userId)
+        userItemRepository.findByUserIdOrderByCreateDateDesc(userId)
 
     @Transactional(propagation = Propagation.REQUIRED)
     fun saveUserItem(addUserItemRequest: AddUserItemRequest): AddUserItemResponse {

@@ -30,8 +30,8 @@ internal class UserItemRepositoryTest {
 
     @Test
     fun `findByUserId`() {
-        val user1Items = userItemRepository.findByUserId("1")
-        val noUserItem = userItemRepository.findByUserId("noUser")
+        val user1Items = userItemRepository.findByUserIdOrderByCreateDateDesc("1")
+        val noUserItem = userItemRepository.findByUserIdOrderByCreateDateDesc("noUser")
 
         assertEquals(userItem1.userId, user1Items[0].userId)
         assertEquals(0, noUserItem.size)

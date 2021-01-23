@@ -6,5 +6,5 @@ import ru.pricelord.pricelord.core.db.model.UserItem
 
 @Repository
 interface UserItemRepository : MongoRepository<UserItem, String> {
-    fun findByUserId(userId: String): List<UserItem>
+    fun findByUserIdOrderByCreateDateDesc(userId: String): List<UserItem>
 }
