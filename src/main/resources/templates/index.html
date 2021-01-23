@@ -13,6 +13,7 @@
 </head>
 <body>
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<div><p th:text="'Дратути '+ ${user.getName()} + '!'"></p></div>
 <div class="container">
     <div class="row">
         <div class="col-lg-10 mt-5 mb-5">
@@ -22,6 +23,18 @@
                     <th>Name</th>
                     <th>Link</th>
                     <th>Price</th>
+                </tr>
+
+                <tr th:each="userItem : ${userItems}">
+                    <td>
+                        <p th:text="${userItem.name}">A Smoke Test'> </p>
+                    </td>
+                    <td>
+                        <p th:text="${userItem.item.link}">A Smoke Test'</p>
+                    </td>
+                    <td>
+                        <p th:text="${userItem.item.lastPrice.price}">A Smoke Test' </p>
+                    </td>
                 </tr>
                 </thead>
             </table>

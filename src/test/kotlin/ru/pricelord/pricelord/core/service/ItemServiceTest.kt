@@ -24,7 +24,7 @@ internal class ItemServiceTest {
         val store = getObject<Store>("store/mvideo.json")
 
         whenever(itemRepository.findItemsWithoutStore()).thenReturn(
-            listOf(item1.apply { storeId = null }, item2.apply { storeId = null })
+            listOf(item1.apply { this.store = null }, item2.apply { this.store = null })
         )
         whenever(storeRepository.findByLink("mvideo.ru")).thenReturn(store)
         whenever(itemRepository.save(item1)).thenReturn(item1)

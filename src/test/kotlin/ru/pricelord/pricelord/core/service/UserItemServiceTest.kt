@@ -69,7 +69,7 @@ internal class UserItemServiceTest {
 
         whenever(linkService.formatLink(request.link)).thenReturn(link)
         whenever(itemService.findItemByLink(link)).thenReturn(null)
-        whenever(itemService.saveItem(item.copy(id = null, storeId = null, lastPriceId = null))).thenReturn(item)
+        whenever(itemService.saveItem(item.copy(id = null, store = null, lastPrice = null))).thenReturn(item)
         whenever(userRepository.findById(userId)).thenReturn(Optional.of(User(userId, "authToken")))
         whenever(userItemRepository.save(expectedUserItem.copy(id = null))).thenReturn(expectedUserItem)
 
@@ -79,7 +79,7 @@ internal class UserItemServiceTest {
 
         verify(linkService, times(1)).formatLink(request.link)
         verify(itemService, times(1)).findItemByLink(link)
-        verify(itemService, times(1)).saveItem(item.copy(id = null, storeId = null, lastPriceId = null))
+        verify(itemService, times(1)).saveItem(item.copy(id = null, store = null, lastPrice = null))
         verify(userRepository, times(1)).findById(userId)
         verify(userItemRepository, times(1)).save(expectedUserItem.copy(id = null))
     }

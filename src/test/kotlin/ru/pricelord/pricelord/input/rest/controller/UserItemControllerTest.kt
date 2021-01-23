@@ -6,6 +6,8 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -17,6 +19,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import ru.pricelord.pricelord.config.SecurityConfig
 import ru.pricelord.pricelord.core.db.model.UserItem
 import ru.pricelord.pricelord.core.errors.UserNotFoundException
 import ru.pricelord.pricelord.core.service.UserItemService
@@ -27,7 +30,7 @@ import ru.pricelord.pricelord.input.rest.model.response.AddUserItemResponse
 
 @ExtendWith(SpringExtension::class)
 @ActiveProfiles("test")
-@WebMvcTest(UserItemController::class)
+@WebMvcTest(controllers = [UserItemController::class], excludeAutoConfiguration = [SecurityAutoConfiguration::class, OAuth2ClientAutoConfiguration::class])
 class UserItemControllerTest {
 
     @MockBean

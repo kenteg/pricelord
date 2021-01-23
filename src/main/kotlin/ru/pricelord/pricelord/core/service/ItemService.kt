@@ -22,8 +22,8 @@ class ItemService(
                 val storeLink = it.link.substringBefore("/")
                 val store = storeRepository.findByLink(storeLink)
 
-                it.storeId =
-                    store?.id ?: throw StoreNotFoundException("Store not found for item: ${it.id} - ${it.link}")
+                it.store =
+                    store ?: throw StoreNotFoundException("Store not found for item: ${it.id} - ${it.link}")
 
                 itemRepository.save(it)
             } catch (ex: Throwable) {

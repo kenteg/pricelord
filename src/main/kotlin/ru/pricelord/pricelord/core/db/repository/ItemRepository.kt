@@ -7,10 +7,10 @@ import ru.pricelord.pricelord.core.db.model.Item
 
 @Repository
 interface ItemRepository : MongoRepository<Item, String> {
-    @Query("{ 'lastPriceId' : null}")
+    @Query("{ 'lastPrice' : null}")
     fun findItemsWithoutPrices(): List<Item>
 
-    @Query("{ 'storeId' : null }")
+    @Query("{ 'store' : null }")
     fun findItemsWithoutStore(): List<Item>
 
     fun findByLink(link: String): Item?

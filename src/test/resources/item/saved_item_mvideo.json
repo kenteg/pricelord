@@ -1,6 +1,9 @@
 {
   "id": "itemId",
   "link": "mvideo.ru/item",
-  "storeId": "1",
-  "lastPriceId": "10"
+  "store": { "id": 1, "name": "mvideo", "link": "https://www.mvideo.ru/", "pathToPrice" : "selector" },
+  "lastPrice": {
+    "id": "10",
+    "price" : 228.5
+  }
 }

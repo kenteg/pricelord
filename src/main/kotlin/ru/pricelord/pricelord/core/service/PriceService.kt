@@ -27,14 +27,14 @@ class PriceService(
         val items = itemRepository.findItemsWithoutPrices()
         items.forEach {
             try {
-                if (it.storeId == null) //store scheduler hasn't started yet
+                if (it.store == null) //store scheduler hasn't started yet
                     return
 
                 val priceValue = parsePrice(it)
-                val price = Price(itemId = it.id!!, price = priceValue)
+                val price = Price(price = priceValue)
 
                 val lastPrice = priceRepository.save(price)
-                itemRepository.save(it.apply { lastPriceId = lastPrice.id })
+                itemRepository.save(it.apply { this.lastPrice = lastPrice })
             } catch (ex: Throwable) {
                 log.error("Error while parse price for item: ${it.id} - ${it.link}", ex)
             }
@@ -42,7 +42,7 @@ class PriceService(
     }
 
     fun parsePrice(item: Item): BigDecimal {
-        val store = storeRepository.findById(item.storeId!!)
+        val store = storeRepository.findById(item.store?.id!!)
         val pathToPrice = store.get().pathToPrice
 
         val options = ChromeOptions()

@@ -31,7 +31,7 @@ class UserItemService(
                 UserNotFoundException("User with id ${addUserItemRequest.userId} not found")
             }.id!!,
             isNeedNotification = addUserItemRequest.isNeedNotification,
-            itemId = item.id!!,
+            item = item,
             name = addUserItemRequest.name
         )
 
@@ -41,7 +41,7 @@ class UserItemService(
             userId = savedUserItem.userId,
             id = savedUserItem.id!!,
             name = savedUserItem.name,
-            itemId = item.id,
+            itemId = item.id!!,
             link = item.link,
             isNeedNotification = savedUserItem.isNeedNotification
         )

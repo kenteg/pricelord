@@ -28,6 +28,7 @@ dependencies {
 
 	implementation("org.springframework.boot:spring-boot-starter-security:2.4.1")
 	implementation("org.springframework.security:spring-security-oauth2-client:5.4.2")
+	implementation("org.springframework.security:spring-security-oauth2-jose:5.4.2")
 	implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.0")
 
 

@@ -1,6 +1,12 @@
 {
   "id": "mongo_id",
   "userId": "userId",
-  "itemId": "itemId1",
+  "item": {
+    "link": "mvideo.ru/8888",
+    "store": { "id": 1, "name": "mvideo", "link": "https://www.mvideo.ru/", "pathToPrice" : "selector" },
+    "lastPrice": { "id": 1,
+      "price": 10.0
+    }
+  },
   "isNeedNotification": false
 }
