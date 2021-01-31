@@ -9,7 +9,5 @@ import java.math.BigDecimal
 data class Price(
         @field:Id
         val id: String? = null,
-        @field:Indexed
-        val itemId: String,
         val price: BigDecimal
 )

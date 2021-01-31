@@ -3,6 +3,14 @@
   "userId": "userId",
   "name": "mvideo item",
   "link": "mvideo/item",
-  "itemId": "itemId",
+  "item": {
+    "id": "itemId",
+    "link": "mvideo.ru/item",
+    "store": { "id": 1, "name": "mvideo", "link": "https://www.mvideo.ru/", "pathToPrice" : "selector" },
+    "lastPrice": {
+      "id": "10",
+      "price" : 228.5
+    }
+  },
   "isNeedNotification": false
 }

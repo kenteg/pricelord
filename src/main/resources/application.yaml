@@ -3,13 +3,41 @@ spring:
     mongodb:
       auto-index-creation: true
 
+  security:
+    oauth2:
+      client.registration:
+        google:
+          clientId: 149335094721-4o21a1seahet357m4aiais67q4io8lgt.apps.googleusercontent.com
+          clientSecret: IdfBk_tHJpUX766ISUSfvaDe
+
+#        vk:
+#          clientId: xxxxxxx
+#          clientSecret: xxxxxxx
+#          scope: openid, email
+#          redirect-uri: https://vk.com/oauth2/callback/vk
+#          access-token-uri: https://oauth.vk.com/access_token
+#          client-authentication-method: basic
+#          authorization-grant-type: authorization_code
+#          authorizationUri: https://oauth.vk.com/authorize?v=5.95
+#          clientName: vkontakte
+#          tokenUri: https://oauth.vk.com/access_token
+#          provider: vk
+#
+#
+#        provider:
+#          token-uri: https://oauth.vk.com/access_token
+#          authorizationUri: https://oauth.vk.com/authorize
+#          userInfoUri: https://api.vk.com/method/users.get
+#          userNameAttribute: id
+
 scheduler:
   priceParser:
-    delay: 60000
+    delay: 600000
   linkItemToStore:
-    delay: 60000
+    delay: 600000
 
 webdriver:
   chrome:
     driver: "/usr/local/bin/chromedriver"
     logfile: "chromedriver.log"
+
